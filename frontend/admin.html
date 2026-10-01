@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+    <div class="header-links">
+      <span id="user-name"></span>
+      <a href="index.html">Back to Chat</a>
+      <a href="#" id="logout-btn">Logout</a>
+    </div>
+  </header>
+
+  <div class="app-container" style="display:block; overflow-y:auto; padding-top:80px;">
+    <div class="admin-container">
+      <div class="dashboard-cards">
+        <div class="dash-card">
+          <h3>Conversations</h3>
+          <div id="total-convs" class="value">0</div>
+        </div>
+        <div class="dash-card">
+          <h3>Messages</h3>
+          <div id="total-msgs" class="value">0</div>
+        </div>
+        <div class="dash-card">
+          <h3>Users</h3>
+          <div id="total-users" class="value">0</div>
+        </div>
+        <div class="dash-card">
+          <h3>Documents</h3>
+          <div id="total-docs" class="value">0</div>
+        </div>
+      </div>
+
+      <div class="admin-section">
+        <h2>Document Management</h2>
+        <div id="upload-zone" class="upload-zone">
+          Drag and drop PDF here, or click to select
+          <input type="file" id="file-upload" accept="application/pdf" style="display:none;">
+        </div>
+        
+        <table id="docs-table" class="doc-table">
+          <thead>
+            <tr>
+              <th>Filename</th>
+              <th>Status</th>
+              <th>Uploaded</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

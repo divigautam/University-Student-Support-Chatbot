@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ChatBot — Digital Campus AI</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body class="auth-page">
+
+  <!-- Ambient background -->
+  <div class="auth-background"></div>
+  <div class="auth-grid"></div>
+
+  <div id="auth-particles"></div>
+
+  <!-- ================= BRAND ================= -->
+
+  <div class="auth-brand">
+
+    <div class="auth-brand-icon">
+      ✦
+    </div>
+
+    <div>
+      <div class="auth-brand-name">ChatBot</div>
+      <div class="auth-brand-subtitle">
+        DIGITAL CAMPUS AI
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="auth-container">
+
+    <!-- Left visual -->
+
+    <section class="auth-visual">
+
+      <div class="auth-visual-label">
+        UNIVERSITY INTELLIGENCE
+      </div>
+
+      <h1>
+        Your Campus.<br>
+        <span>Your Intelligence.</span>
+      </h1>
+
+      <p>
+        An AI-powered student support system designed
+        to help you navigate your academic journey at ABES.
+      </p>
+
+
+      <!-- 3D CORE -->
+
+      <div class="auth-core">
+
+        <div class="auth-core-ring ring-a"></div>
+        <div class="auth-core-ring ring-b"></div>
+
+        <div id="auth-canvas"></div>
+
+      </div>
+
+
+      <div class="auth-system-status">
+        <span></span>
+        AI CORE READY
+      </div>
+
+    </section>
+
+
+    <!-- Login card -->
+
+    <section class="auth-card">
+
+      <div class="auth-card-top">
+
+        <div class="auth-eyebrow">
+          STUDENT ACCESS
+        </div>
+
+        <h2>
+          Welcome back
+        </h2>
+
+        <p>
+          Sign in to access your campus intelligence.
+        </p>
+
+      </div>
+
+
+      <!-- ================= TABS ================= -->
+
+      <div class="tabs">
+
+        <div
+          class="tab active"
+          id="login-tab"
+        >
+          Login
+        </div>
+
+        <div
+          class="tab"
+          id="register-tab"
+        >
+          Register
+        </div>
+
+      </div>
+
+
+      <!-- ================= LOGIN ================= -->
+
+      <form id="login-form">
+
+        <div class="form-group">
+
+          <label>
+            UNIVERSITY EMAIL
+          </label>
+
+          <div class="input-container">
+
+            <span class="input-icon">@</span>
+
+            <input
+              type="email"
+              id="login-email"
+              placeholder="student@abes.ac.in"
+              autocomplete="email"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            PASSWORD
+          </label>
+
+          <div class="input-container">
+
+            <span class="input-icon">◆</span>
+
+            <input
+              type="password"
+              id="login-pass"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="btn accent auth-submit"
+        >
+
+          <span>ENTER CAMPUS AI</span>
+
+          <span class="auth-arrow">→</span>
+
+        </button>
+
+      </form>
+
+
+      <!-- ================= REGISTER ================= -->
+
+      <form
+        id="register-form"
+        style="display: none;"
+      >
+
+        <div class="form-group">
+
+          <label>
+            USERNAME
+          </label>
+
+          <div class="input-container">
+
+            <span class="input-icon">◇</span>
+
+            <input
+              type="text"
+              id="reg-user"
+              placeholder="Your name"
+              autocomplete="name"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            UNIVERSITY EMAIL
+          </label>
+
+          <div class="input-container">
+
+            <span class="input-icon">@</span>
+
+            <input
+              type="email"
+              id="reg-email"
+              placeholder="student@abes.ac.in"
+              autocomplete="email"
+              required
+              pattern=".*@abes\.ac\.in$"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            PASSWORD
+          </label>
+
+          <div class="input-container">
+
+            <span class="input-icon">◆</span>
+
+            <input
+              type="password"
+              id="reg-pass"
+              placeholder="Create a password"
+              autocomplete="new-password"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            CONFIRM PASSWORD
+          </label>
+
+          <div class="input-container">
+
+            <span class="input-icon">◆</span>
+
+            <input
+              type="password"
+              id="reg-confirm"
+              placeholder="Confirm your password"
+              autocomplete="new-password"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="btn accent auth-submit"
+        >
+
+          <span>CREATE STUDENT ACCOUNT</span>
+
+          <span class="auth-arrow">→</span>
+
+        </button>
+
+      </form>
+
+
+      <div
+        id="error-msg"
+        class="error-msg"
+      ></div>
+
+
+      <div class="auth-footer">
+
+        <span>ABES ENGINEERING COLLEGE</span>
+
+        <span>•</span>
+
+        <span>SECURE ACCESS</span>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <div class="auth-bottom-status">
+
+    <span class="online-dot"></span>
+
+    SYSTEM OPERATIONAL
+
+    <span>•</span>
+
+    RAG KNOWLEDGE ENGINE
+
+  </div>
+
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+
+
+  <!-- ================= 3D CORE ================= -->
+
+  <script>
+
+    const container =
+      document.getElementById("auth-canvas");
+
+    const scene =
+      new THREE.Scene();
+
+    const camera =
+      new THREE.PerspectiveCamera(
+        45,
+        container.clientWidth /
+          container.clientHeight,
+        0.1,
+        100
+      );
+
+    camera.position.z = 4;
+
+
+    const renderer =
+      new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true
+      });
+
+    renderer.setPixelRatio(
+      Math.min(window.devicePixelRatio, 2)
+    );
+
+    renderer.setSize(
+      container.clientWidth,
+      container.clientHeight
+    );
+
+    container.appendChild(
+      renderer.domElement
+    );
+
+
+    /* Main AI structure */
+
+    const geometry =
+      new THREE.IcosahedronGeometry(
+        1,
+        4
+      );
+
+    const material =
+      new THREE.MeshBasicMaterial({
+        color: 0x8b5cf6,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.8
+      });
+
+    const core =
+      new THREE.Mesh(
+        geometry,
+        material
+      );
+
+    scene.add(core);
+
+
+    /* Inner structure */
+
+    const innerGeometry =
+      new THREE.IcosahedronGeometry(
+        0.65,
+        3
+      );
+
+    const innerMaterial =
+      new THREE.MeshBasicMaterial({
+        color: 0x22d3ee,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.45
+      });
+
+    const inner =
+      new THREE.Mesh(
+        innerGeometry,
+        innerMaterial
+      );
+
+    scene.add(inner);
+
+
+    /* Particles */
+
+    const particleGeometry =
+      new THREE.BufferGeometry();
+
+    const count = 350;
+
+    const positions =
+      new Float32Array(
+        count * 3
+      );
+
+    for (
+      let i = 0;
+      i < count * 3;
+      i++
+    ) {
+
+      positions[i] =
+        (Math.random() - 0.5) * 5;
+
+    }
+
+    particleGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(
+        positions,
+        3
+      )
+    );
+
+
+    const particleMaterial =
+      new THREE.PointsMaterial({
+        color: 0xa78bfa,
+        size: 0.02,
+        transparent: true,
+        opacity: 0.7
+      });
+
+
+    const particles =
+      new THREE.Points(
+        particleGeometry,
+        particleMaterial
+      );
+
+    scene.add(particles);
+
+
+    /* Orbit */
+
+    const ringGeometry =
+      new THREE.TorusGeometry(
+        1.35,
+        0.008,
+        16,
+        100
+      );
+
+    const ringMaterial =
+      new THREE.MeshBasicMaterial({
+        color: 0x38bdf8,
+        transparent: true,
+        opacity: 0.65
+      });
+
+    const ring =
+      new THREE.Mesh(
+        ringGeometry,
+        ringMaterial
+      );
+
+    ring.rotation.x = 1.15;
+
+    scene.add(ring);
+
+
+    /* Animation */
+
+    const clock =
+      new THREE.Clock();
+
+
+    function animate() {
+
+      requestAnimationFrame(
+        animate
+      );
+
+      const time =
+        clock.getElapsedTime();
+
+
+      core.rotation.x =
+        time * 0.18;
+
+      core.rotation.y =
+        time * 0.25;
+
+
+      inner.rotation.x =
+        -time * 0.3;
+
+      inner.rotation.y =
+        -time * 0.2;
+
+
+      ring.rotation.z =
+        time * 0.3;
+
+
+      particles.rotation.y =
+        time * 0.015;
+
+
+      const scale =
+        1 +
+        Math.sin(time * 1.8) *
+        0.035;
+
+
+      core.scale.set(
+        scale,
+        scale,
+        scale
+      );
+
+
+      renderer.render(
+        scene,
+        camera
+      );
+
+    }
+
+
+    animate();
+
+
+    window.addEventListener(
+      "resize",
+      () => {
+
+        const width =
+          container.clientWidth;
+
+        const height =
+          container.clientHeight;
+
+
+        camera.aspect =
+          width / height;
+
+        camera.updateProjectionMatrix();
+
+
+        renderer.setSize(
+          width,
+          height
+        );
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>

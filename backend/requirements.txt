@@ -1,0 +1,33 @@
+# Core
+fastapi==0.141.1
+uvicorn==0.52.4
+python-dotenv==1.2.3
+pydantic>=2.13.0
+pydantic-settings>=2.8.0
+email-validator>=2.0.0
+
+# OpenAI
+openai>=3.13.0
+
+# Database
+sqlalchemy[asyncio]>=2.0.0
+aiosqlite>=0.21.0
+
+# Vector Store
+chromadb>=1.0.0
+
+# PDF Processing
+PyMuPDF>=1.25.0
+
+# Authentication
+python-jose[cryptography]>=3.4.0
+passlib[bcrypt]>=1.7.4
+bcrypt>=4.0.0
+
+# File uploads
+python-multipart>=0.0.20
+
+# Testing
+pytest>=8.0.0
+pytest-asyncio>=0.25.0
+httpx>=0.28.0

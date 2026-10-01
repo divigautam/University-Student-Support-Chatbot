@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ChatBot — Digital Campus AI</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Ambient background -->
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="grid-background"></div>
+  <div id="particles"></div>
+
+  <!-- ================= TOP NAVBAR ================= -->
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <div class="brand-icon">
+        <span>✦</span>
+      </div>
+
+      <div class="brand-text">
+        <div class="brand-name">ChatBot</div>
+        <div class="brand-subtitle">DIGITAL CAMPUS AI</div>
+      </div>
+
+    </div>
+
+    <div class="system-status">
+      <span class="status-dot"></span>
+      <span>AI SYSTEM ONLINE</span>
+    </div>
+
+    <div class="header-links">
+
+      <div class="user-profile">
+        <div class="avatar">
+          <span id="user-initial">S</span>
+        </div>
+
+        <span id="user-name">Student</span>
+      </div>
+
+      <a href="admin.html" id="admin-link" style="display:none;">
+        Admin
+      </a>
+
+      <a href="#" id="logout-btn">
+        Logout
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================= MAIN APPLICATION ================= -->
+
+  <div class="app-container">
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-top">
+
+        <button id="new-chat-btn" class="btn accent new-chat-btn">
+          <span class="plus-icon">+</span>
+          <span>New Conversation</span>
+        </button>
+
+      </div>
+
+
+      <div class="sidebar-section-title">
+        <span>CONVERSATIONS</span>
+        <span class="conversation-count">●</span>
+      </div>
+
+
+      <ul id="conv-list" class="conversation-list"></ul>
+
+
+      <div class="sidebar-bottom">
+
+        <div class="campus-card">
+
+          <div class="campus-icon">◈</div>
+
+          <div>
+            <div class="campus-title">ABES Campus AI</div>
+            <div class="campus-subtitle">
+              Your intelligent student companion
+            </div>
+          </div>
+
+        </div>
+
+        <div class="sidebar-footer">
+          <span>SECURE AI</span>
+          <span>•</span>
+          <span>RAG ENABLED</span>
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- ================= CHAT AREA ================= -->
+
+    <main class="chat-area">
+
+
+      <!-- Mobile / workspace heading -->
+
+      <div class="workspace-header">
+
+        <div>
+          <span class="workspace-label">UNIVERSITY INTELLIGENCE</span>
+          <h1>How can I help you today?</h1>
+        </div>
+
+        <div class="workspace-badge">
+          <span>●</span> ABES
+        </div>
+
+      </div>
+
+
+      <!-- ================= AI CORE ================= -->
+
+      <section class="ai-core-section">
+
+        <div class="ai-orbit orbit-1"></div>
+        <div class="ai-orbit orbit-2"></div>
+        <div class="ai-orbit orbit-3"></div>
+
+        <div class="ai-core-glow"></div>
+
+        <div id="ai-canvas"></div>
+
+        <div class="core-status">
+          <span class="core-status-dot"></span>
+          <span id="core-status-text">AI CORE READY</span>
+        </div>
+
+        <div class="core-title">
+          <span class="core-small">YOUR</span>
+          <span>Campus Intelligence</span>
+        </div>
+
+      </section>
+
+
+      <!-- ================= MESSAGES ================= -->
+
+      <div id="messages-container" class="messages">
+
+        <div class="welcome-message">
+
+          <div class="welcome-icon">✦</div>
+
+          <div>
+            <div class="welcome-title">
+              Welcome to ChatBot
+            </div>
+
+            <div class="welcome-text">
+              Ask me about academics, hostel rules, schedules,
+              campus information and more.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= QUICK ACTIONS ================= -->
+
+      <div class="quick-actions">
+
+        <button class="quick-action"
+                onclick="document.getElementById('chat-input').value='What is the academic calendar?'">
+          <span>◫</span>
+          Academic Calendar
+        </button>
+
+        <button class="quick-action"
+                onclick="document.getElementById('chat-input').value='Tell me about hostel rules'">
+          <span>⌂</span>
+          Hostel Rules
+        </button>
+
+        <button class="quick-action"
+                onclick="document.getElementById('chat-input').value='What are the important exam dates?'">
+          <span>◇</span>
+          Exam Dates
+        </button>
+
+        <button class="quick-action"
+                onclick="document.getElementById('chat-input').value='Tell me about ABES campus facilities'">
+          <span>◎</span>
+          Campus
+        </button>
+
+      </div>
+
+
+      <!-- ================= INPUT ================= -->
+
+      <div class="input-wrapper">
+
+        <div class="input-area">
+
+          <div class="input-prefix">
+            <span>✦</span>
+          </div>
+
+          <textarea
+            id="chat-input"
+            placeholder="Ask ChatBot anything about ABES..."
+            rows="1"
+          ></textarea>
+
+          <button id="send-btn" class="send-button">
+
+            <span class="send-text">SEND</span>
+
+            <span class="send-icon">
+              ↑
+            </span>
+
+          </button>
+
+        </div>
+
+        <div class="input-hint">
+          <span>ENTER</span> to send
+          <span class="hint-divider">•</span>
+          <span>SHIFT + ENTER</span> for new line
+          <span class="hint-right">AI responses may contain errors</span>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+
+
+  <!-- ================= 3D AI CORE ================= -->
+
+  <script>
+
+    const container = document.getElementById("ai-canvas");
+
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      container.clientWidth / container.clientHeight,
+      0.1,
+      100
+    );
+
+    camera.position.z = 4;
+
+
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true
+    });
+
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    renderer.setSize(
+      container.clientWidth,
+      container.clientHeight
+    );
+
+    container.appendChild(renderer.domElement);
+
+
+    // ================= AI CORE =================
+
+    const geometry = new THREE.IcosahedronGeometry(
+      1,
+      4
+    );
+
+    const material = new THREE.MeshBasicMaterial({
+      color: 0x8b5cf6,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.75
+    });
+
+    const core = new THREE.Mesh(
+      geometry,
+      material
+    );
+
+    scene.add(core);
+
+
+    // Inner core
+
+    const innerGeometry =
+      new THREE.IcosahedronGeometry(0.65, 3);
+
+    const innerMaterial =
+      new THREE.MeshBasicMaterial({
+        color: 0x22d3ee,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.35
+      });
+
+    const innerCore =
+      new THREE.Mesh(
+        innerGeometry,
+        innerMaterial
+      );
+
+    scene.add(innerCore);
+
+
+    // ================= PARTICLES =================
+
+    const particleGeometry =
+      new THREE.BufferGeometry();
+
+    const particleCount = 700;
+
+    const positions =
+      new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount * 3; i++) {
+
+      positions[i] =
+        (Math.random() - 0.5) * 7;
+
+    }
+
+    particleGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(
+        positions,
+        3
+      )
+    );
+
+
+    const particleMaterial =
+      new THREE.PointsMaterial({
+        color: 0xa78bfa,
+        size: 0.018,
+        transparent: true,
+        opacity: 0.7
+      });
+
+
+    const particles =
+      new THREE.Points(
+        particleGeometry,
+        particleMaterial
+      );
+
+    scene.add(particles);
+
+
+    // ================= LIGHT RINGS =================
+
+    function createRing(radius, opacity) {
+
+      const ringGeometry =
+        new THREE.TorusGeometry(
+          radius,
+          0.008,
+          16,
+          100
+        );
+
+      const ringMaterial =
+        new THREE.MeshBasicMaterial({
+          color: 0x38bdf8,
+          transparent: true,
+          opacity: opacity
+        });
+
+      return new THREE.Mesh(
+        ringGeometry,
+        ringMaterial
+      );
+    }
+
+
+    const ring1 = createRing(1.35, 0.6);
+    const ring2 = createRing(1.55, 0.35);
+
+
+    ring1.rotation.x = 1.2;
+    ring1.rotation.y = 0.3;
+
+    ring2.rotation.x = 0.5;
+    ring2.rotation.y = 1;
+
+
+    scene.add(ring1);
+    scene.add(ring2);
+
+
+    // ================= ANIMATION =================
+
+    const clock = new THREE.Clock();
+
+
+    function animate() {
+
+      requestAnimationFrame(animate);
+
+      const time = clock.getElapsedTime();
+
+
+      core.rotation.x =
+        time * 0.18;
+
+      core.rotation.y =
+        time * 0.25;
+
+
+      innerCore.rotation.x =
+        -time * 0.3;
+
+      innerCore.rotation.y =
+        -time * 0.22;
+
+
+      ring1.rotation.z =
+        time * 0.25;
+
+      ring2.rotation.z =
+        -time * 0.18;
+
+
+      particles.rotation.y =
+        time * 0.015;
+
+
+      const scale =
+        1 + Math.sin(time * 1.8) * 0.035;
+
+      core.scale.set(
+        scale,
+        scale,
+        scale
+      );
+
+
+      renderer.render(
+        scene,
+        camera
+      );
+
+    }
+
+
+    animate();
+
+
+    // ================= RESPONSIVE =================
+
+    window.addEventListener(
+      "resize",
+      () => {
+
+        const width =
+          container.clientWidth;
+
+        const height =
+          container.clientHeight;
+
+
+        camera.aspect =
+          width / height;
+
+        camera.updateProjectionMatrix();
+
+
+        renderer.setSize(
+          width,
+          height
+        );
+
+      }
+    );
+
+
+  </script>
+
+</body>
+</html>
